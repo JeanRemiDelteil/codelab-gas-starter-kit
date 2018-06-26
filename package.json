@@ -1,0 +1,19 @@
+{
+	"name": "codelab-gas-starter-kit",
+	"version": "0.0.1",
+	"description": "Google Apps Script shell project",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JeanRemiDelteil/codelab-gas-starter-kit"
+	},
+	"dependencies": {
+		"@scriptaddicts/gas-error-handler": "latest"
+	},
+	"devDependencies": {
+		"gas-lib": "latest",
+		"grunt": "^1.0.1",
+		"grunt-contrib-clean": "^1.0.0",
+		"grunt-contrib-copy": "^1.0.0"
+	}
+}

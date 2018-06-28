@@ -9,33 +9,71 @@
 			padding: 7px 13px;
 			border-radius: 2px;
 			border-style: none;
+			user-select: none;
+			box-shadow: #0000004f 0 2px 5px 0;
+		}
+		button:not(:first-of-type) {
+			margin-left: 10px;
 		}
 		
-		#button-action{
+		.button-action{
 			color: white;
 			background-color: cadetblue;
 		}
+		
+		.action-bar{
+			display: flex;
+		}
+		.input-field{
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			
+			margin-bottom: 20px;
+		}
+		
+		#inputColor{
+			width: 180px;
+		}
 	</style>
-	
+
 </head>
 <body>
 	
-	<button id="button-action">Action</button>
+	<div class="input-field">
+		<label for="inputColor">Pick a color</label>
+		<input id="inputColor" type="color">
+	</div>
+	<div class="action-bar">
+		<button class="button-action" id="buttonFetch">Fetch cell background</button>
+		<button class="button-action" id="buttonUpdate">Update cell background</button>
+	</div>
 	
 	<!-- Include init code -->
 	<script>
 		// noinspection JSUnusedLocalSymbols
 		var _self = {
-			dom: {
-				actionButton: document.getElementById('button-action'),
+			_dom: {
+				buttonFetch: document.getElementById('buttonFetch'),
+				buttonUpdate: document.getElementById('buttonUpdate'),
+				inputColor: document.getElementById('inputColor'),
 			},
+			_color: '<?= backgroundColor ?>',
 			
+			get color() {
+				return this._color;
+			},
+			set color(value) {
+				this._color = value;
+				
+				this._dom.inputColor.value = value;
+			},
 		};
 	</script>
 	
 	
 	<!-- Include main code -->
 	<?!= HtmlService.createHtmlOutputFromFile('sidebar/js/main.js').getContent(); ?>
-	
+
 </body>
 </html>

@@ -1,14 +1,88 @@
 <script>
 	
 	/**
-	 * Start the app
+	 * Update the spreadsheet currently selected cell background
+	 *
+	 * @param {string} color
 	 */
-	_self.init = function() {
-		console.log('Sidebar started');
+	_self.updateCellBackground = function(color) {
+		
+		return new Promise(function(resolve, reject) {
+			google.script.run
+				.withFailureHandler(reject)
+				.withSuccessHandler(resolve)
+				.updateCellBackground(color);
+			
+			setTimeout(reject, 20000);
+		});
+	};
+	
+	/**
+	 * Fetch the spreadsheet currently selected cell background
+	 *
+	 * @return {Promise<string>} A promise resolving to the cell background color
+	 */
+	_self.fetchCellBackground = function() {
+		
+		return new Promise(function(resolve, reject) {
+			google.script.run
+				.withFailureHandler(reject)
+				.withSuccessHandler(resolve)
+				.getCellBackground();
+			
+			setTimeout(reject, 20000);
+		});
 	};
 	
 	
-	/* Start */
+	
+	/**
+	 * Fetch button click listener
+	 */
+	_self._onClick_fetch = function() {
+		
+		this.fetchCellBackground()
+			.then(color => this.color = color)
+			.catch(err => console.error(err));
+		
+	};
+	
+	/**
+	 * Update button click listener
+	 */
+	_self._onClick_update = function() {
+		
+		this.updateCellBackground(this.color);
+		
+	};
+	
+	/**
+	 * Save color on input event
+	 */
+	_self._onColorInput = function() {
+		this._color = this._dom.inputColor.value;
+	};
+	
+	
+	
+	/**
+	 * Start the app
+	 */
+	_self.init = function() {
+		
+		// Init color
+		this.color = this._color;
+		
+		// Set listeners
+		_self._dom.buttonFetch.addEventListener('click', _self._onClick_fetch.bind(this));
+		_self._dom.buttonUpdate.addEventListener('click', _self._onClick_update.bind(this));
+		_self._dom.inputColor.addEventListener('input', _self._onColorInput.bind(this));
+		
+	};
+	
+	
+	
+	/** Start */
 	_self.init();
 
 </script>

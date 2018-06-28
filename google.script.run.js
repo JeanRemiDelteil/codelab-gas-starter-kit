@@ -16,7 +16,8 @@ GoogleScriptRun.prototype = {
 	openSidebar: openSidebar,
 	
 	// PLACE HERE functions called from Sidebar/Modal to keep the link and have auto-complete
-	
+	updateCellBackground: updateCellBackground,
+	getCellBackground: getCellBackground,
 };
 
 

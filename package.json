@@ -1,7 +1,7 @@
 {
 	"name": "codelab-gas-starter-kit",
-	"version": "0.0.1",
-	"description": "Google Apps Script shell project",
+	"version": "1.0.0",
+	"description": "Simple demo tool to change cell background color in Google Spreadsheet",
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",

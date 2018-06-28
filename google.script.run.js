@@ -13,6 +13,7 @@ GoogleScriptRun.prototype = {
 	// PLACE HERE the entryPoint functions (just for listing purpose) 
 	// onInstall: onInstall,
 	onOpen: onOpen,
+	openSidebar: openSidebar,
 	
 	// PLACE HERE functions called from Sidebar/Modal to keep the link and have auto-complete
 	

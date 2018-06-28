@@ -1,0 +1,41 @@
+<html>
+<head>
+	<!-- Include Library here -->
+	
+	
+	<!-- Sidebar stylesheet, can also be in a separate file and included via the HtmlService -->
+	<style>
+		button {
+			padding: 7px 13px;
+			border-radius: 2px;
+			border-style: none;
+		}
+		
+		#button-action{
+			color: white;
+			background-color: cadetblue;
+		}
+	</style>
+	
+</head>
+<body>
+	
+	<button id="button-action">Action</button>
+	
+	<!-- Include init code -->
+	<script>
+		// noinspection JSUnusedLocalSymbols
+		var _self = {
+			dom: {
+				actionButton: document.getElementById('button-action'),
+			},
+			
+		};
+	</script>
+	
+	
+	<!-- Include main code -->
+	<?!= HtmlService.createHtmlOutputFromFile('sidebar/js/main.js').getContent(); ?>
+	
+</body>
+</html>
